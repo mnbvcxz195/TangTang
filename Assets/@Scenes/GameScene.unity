@@ -152,11 +152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 816c0e1af492b8648b02f65538122402, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mapPrefab: {fileID: 7253568456659449358, guid: 4f468dd566d3c6442bfd5da04012c611, type: 3}
-  _snakePrefab: {fileID: 8940649900012835877, guid: 4037ece3bf1b39d4594deb096bd8d436, type: 3}
-  _slimePrefab: {fileID: 7464379908625430211, guid: 862c1768fd58f3248b3c1ac24fa2c775, type: 3}
-  _goblinPrefab: {fileID: 7686032781538409021, guid: a0840d73a52554a4d80d1289482970d6, type: 3}
-  _joystickPrefab: {fileID: 7617814057900009570, guid: 3592998711d20df40ae1e9768a9862b8, type: 3}
 --- !u!4 &130549885
 Transform:
   m_ObjectHideFlags: 0
@@ -226,7 +221,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

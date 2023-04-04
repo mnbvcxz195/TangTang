@@ -1,48 +1,86 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public class GameScene : MonoBehaviour
 {
-    public GameObject _mapPrefab;    
-    public GameObject _snakePrefab;
-    public GameObject _slimePrefab;
-    public GameObject _goblinPrefab;
-    public GameObject _joystickPrefab;
-
-    GameObject _map;
-    GameObject _monsters;
-	GameObject _snake;
-	GameObject _player;
-	GameObject _goblin;
-	GameObject _joystick;
-
-    // Start is called before the first frame update
     void Start()
     {
-        _map = GameObject.Instantiate(_mapPrefab);
-        _snake = GameObject.Instantiate(_snakePrefab);
-        _player = GameObject.Instantiate(_slimePrefab);
-        _goblin = GameObject.Instantiate(_goblinPrefab);
-        _joystick = GameObject.Instantiate(_joystickPrefab);
+		Managers.Resource.LoadAllAsync<GameObject>("Prefabs", (key, count, totalCount) =>
+		{
+			//Debug.Log($"{key}, {count}/{totalCount}");
+			if (count == totalCount)
+			{
+				//StartLoaded();
+				//StartLoaded2();
 
-        _map.name = "@Map";
+				Managers.Resource.LoadAllAsync<Sprite>("Sprites", (key2, count2, totalCount2) =>
+				{
+					//Debug.Log($"{key}, {count}/{totalCount}");
+					if (count2 == totalCount2)
+					{
+						Managers.Resource.LoadAllAsync<TextAsset>("Data", (key3, count3, totalCount3) =>
+						{
+							//Debug.Log($"{key}, {count}/{totalCount}");
+							if (count3 == totalCount3)
+							{
+								//StartLoaded();
+								StartLoaded2();
+							}
+						});
+						//StartLoaded();
+						//StartLoaded2();
+					}
+				});
+			}
+		});
 
-        _monsters = new GameObject() { name = "@Monsters" };
-		_snake.name = "Snake";
-        _player.name = "Player";
-        _goblin.name = "Goblin";
+		
+	}
 
-        _snake.transform.parent = _monsters.transform;
-		_goblin.transform.parent = _monsters.transform;
+	void StartLoaded()
+	{
+		var player = Managers.Resource.Instantiate("Slime_01.prefab");
+		player.GetOrAddComponent<PlayerController>(); 		
+		var snake = Managers.Resource.Instantiate("Snake_01.prefab");
+		var goblin = Managers.Resource.Instantiate("Goblin_01.prefab");
+		var joystick = Managers.Resource.Instantiate("UI_Joystick.prefab");
+		joystick.name = "@UI_Joystick";
 
-		_player.AddComponent<PlayerController>();
+		var map = Managers.Resource.Instantiate("Map.prefab");
+		map.name = "@Map";
+		Camera.main.GetComponent<CameraController>().Target = player;
+	}
 
-        Camera.main.GetComponent<CameraController>().Target = _player;
+	SpawningPool _spawningPool;
 
-		_joystick.name = "@UI_Joystick";
+	void StartLoaded2()
+	{
+		_spawningPool = gameObject.AddComponent<SpawningPool>();
 
-        //Managers.Scene.LoadScene(Define.Scene.DevScene);
+		var player = Managers.Object.Spawn<PlayerController>();
+
+		for (int i = 0; i < 10; i++)
+		{
+			MonsterController mc = Managers.Object.Spawn<MonsterController>(Random.Range(0, 2));
+			mc.transform.position = new Vector2(Random.Range(-5, 5), Random.Range(-5, 5));
+		}
+
+		Managers.Resource.Instantiate("UI_Joystick.prefab").name = "@UI_Joystick";
+		Managers.Resource.Instantiate("Map.prefab").name = "@Map";
+
+		Camera.main.GetComponent<CameraController>().Target = player.gameObject;
+
+		// Data Test
+		Managers.Data.Init();
+
+		foreach (var playerData in Managers.Data.PlayerDic.Values)
+		{
+			Debug.Log($"Lvl : {playerData.level}, Hp{playerData.maxHp}");
+		}
+
 	}
 
 	// Update is called once per frame

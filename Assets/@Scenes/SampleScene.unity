@@ -220,63 +220,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b752ffcd0d6d4c04887595fc1c663925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &532791133
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 7253568456659449358, guid: 4f468dd566d3c6442bfd5da04012c611, type: 3}
-      propertyPath: m_Name
-      value: Map
-      objectReference: {fileID: 0}
-    - target: {fileID: 7253568456659449359, guid: 4f468dd566d3c6442bfd5da04012c611, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7253568456659449359, guid: 4f468dd566d3c6442bfd5da04012c611, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7253568456659449359, guid: 4f468dd566d3c6442bfd5da04012c611, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7253568456659449359, guid: 4f468dd566d3c6442bfd5da04012c611, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7253568456659449359, guid: 4f468dd566d3c6442bfd5da04012c611, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7253568456659449359, guid: 4f468dd566d3c6442bfd5da04012c611, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7253568456659449359, guid: 4f468dd566d3c6442bfd5da04012c611, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7253568456659449359, guid: 4f468dd566d3c6442bfd5da04012c611, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7253568456659449359, guid: 4f468dd566d3c6442bfd5da04012c611, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7253568456659449359, guid: 4f468dd566d3c6442bfd5da04012c611, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7253568456659449359, guid: 4f468dd566d3c6442bfd5da04012c611, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4f468dd566d3c6442bfd5da04012c611, type: 3}
 --- !u!1 &1226476804
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,11 +249,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 816c0e1af492b8648b02f65538122402, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mapPrefab: {fileID: 7253568456659449358, guid: 4f468dd566d3c6442bfd5da04012c611, type: 3}
-  _snakePrefab: {fileID: 8940649900012835877, guid: 4037ece3bf1b39d4594deb096bd8d436, type: 3}
-  _slimePrefab: {fileID: 7464379908625430211, guid: 862c1768fd58f3248b3c1ac24fa2c775, type: 3}
-  _goblinPrefab: {fileID: 7686032781538409021, guid: a0840d73a52554a4d80d1289482970d6, type: 3}
-  _joystickPrefab: {fileID: 7617814057900009570, guid: 3592998711d20df40ae1e9768a9862b8, type: 3}
 --- !u!4 &1226476806
 Transform:
   m_ObjectHideFlags: 0
@@ -324,7 +262,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1910498554
 GameObject:
@@ -392,5 +330,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
