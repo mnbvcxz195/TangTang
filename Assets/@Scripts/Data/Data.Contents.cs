@@ -6,36 +6,11 @@ using UnityEngine;
 
 namespace Data
 {
-	//#region PlayerData
-	//[Serializable]
-	//public class PlayerData
-	//{
-	//	public int level;
-	//	public int maxHp;
-	//	public int attack;
-	//	public int totalExp;
-	//}
-
-	//[Serializable]
-	//public class PlayerDataLoader : ILoader<int, PlayerData>
-	//{
-	//	public List<PlayerData> stats = new List<PlayerData>();
-
-	//	public Dictionary<int, PlayerData> MakeDict()
-	//	{
-	//		Dictionary<int, PlayerData> dict = new Dictionary<int, PlayerData>();
-	//		foreach (PlayerData stat in stats)
-	//			dict.Add(stat.level, stat);
-	//		return dict;
-	//	}
-	//}
-	//#endregion
-
 	#region PlayerData
 	public class PlayerData
 	{
-		[XmlAttribute]//xml 파일을 가져올 경우 xml의 Attribute값에 이런 것들이 들어간다는 것을 표시(안쓰면 잘 못찾음).
-        public int level;
+		[XmlAttribute]
+		public int level;
 		[XmlAttribute]
 		public int maxHp;
 		[XmlAttribute]
@@ -61,6 +36,7 @@ namespace Data
 	#endregion
 
 	#region MonsterData
+
 	public class MonsterData
 	{
 		[XmlAttribute]
@@ -79,19 +55,78 @@ namespace Data
 		// - 일정 확률로
 		// - 어떤 아이템을 (보석, 스킬 가차, 골드, 고기)
 		// - 몇 개 드랍할지?
+
+
 	}
 
-	[Serializable, XmlRoot("MonsterDatas")]
-	public class MonsterDataLoader : ILoader<string, MonsterData>
-	{
-		[XmlElement("MonsterData")]
-		public List<MonsterData> stats = new List<MonsterData>();
+	#endregion
 
-		public Dictionary<string, MonsterData> MakeDict()
+	#region SkillData
+	[Serializable]
+	public class OnHit
+	{
+		[XmlElement("HitEffect")]
+		public List<HitEffect> effects = new List<HitEffect>();
+	}
+
+	[Serializable]
+	public class HitEffect
+	{
+		[XmlAttribute]
+		public string type;
+		[XmlAttribute]
+		public int templateID;
+		[XmlAttribute]
+		public int value;
+	}
+
+	[Serializable]
+	public class SkillData
+	{
+		[XmlAttribute]
+		public int templateID;
+		
+		[XmlAttribute(AttributeName ="type")]
+		//public string skillTypeStr;
+		public Define.SkillType skillType = Define.SkillType.None; // TODO
+
+		[XmlAttribute]
+		public int nextID;
+		public int prevID = 0; // TODO
+		
+		[XmlAttribute]
+		public string prefab;
+
+		//[XmlElement("OnHit")]
+		//public OnHit onHit;
+
+		[XmlElement("HitEffect")]
+		public List<HitEffect> hitEffects = new List<HitEffect>();
+
+		// ... 아주 많이
+		[XmlAttribute]
+		public int damage;
+	}
+
+	[Serializable, XmlRoot("SkillDatas")]
+	public class SkillDataLoader : ILoader<int, SkillData>
+	{
+		[XmlElement("SkillData")]
+		public List<SkillData> skills = new List<SkillData>();
+
+		public Dictionary<int, SkillData> MakeDict()
 		{
-			Dictionary<string, MonsterData> dict = new Dictionary<string, MonsterData>();
-			foreach (MonsterData stat in stats)
-				dict.Add(stat.name, stat);
+			Dictionary<int, SkillData> dict = new Dictionary<int, SkillData>();
+			foreach (SkillData skill in skills)
+				dict.Add(skill.templateID, skill);
+
+			// Post Process
+			foreach (SkillData skill in skills)
+			{
+				if (skill.nextID != 0)
+					dict[skill.nextID].prevID = skill.templateID;
+			}
+
 			return dict;
 		}
 	}

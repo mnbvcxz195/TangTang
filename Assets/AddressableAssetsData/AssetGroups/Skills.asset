@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Skills
+  m_EditorClassIdentifier: 
+  m_GroupName: Skills
+  m_Data:
+    m_SerializedData: []
+  m_GUID: a5408fef61f90954aa26c3f5d22ef23c
+  m_SerializeEntries:
+  - m_GUID: bce7db9fa07b4314983d7ade11937904
+    m_Address: FireProjectile.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+  - m_GUID: b65a3fb28ab92db4da6944f8fc90410e
+    m_Address: EgoSword.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+  - m_GUID: 66a76dfd48b53df47bb6636462f487e0
+    m_Address: MonsterProjectile.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+  - m_GUID: 2ba70a4a3d8c1ab468be5bdc4b7971d8
+    m_Address: PoisonField_AOE_01.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+  - m_GUID: ec51167c5f8132444a2236fd0712eec5
+    m_Address: WindCutter.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+  - m_GUID: a5d5d55eff665894e90cd04330b5cedb
+    m_Address: Assets/@Resources/Skills/PoisonFieldProjectile.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 4305360a0736ad546a388d56f649cdc6, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 8ff135538ff480f45aaa80be076f37d9, type: 2}
+    - {fileID: 11400000, guid: 7f676c40ae8d2af42b5d4368d24694f7, type: 2}

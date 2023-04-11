@@ -15,26 +15,26 @@ MonoBehaviour:
   m_GroupName: Sprites
   m_Data:
     m_SerializedData: []
-  m_GUID: 0a8f6843748313443b52b59599f764c0
+  m_GUID: 48a006fc7892a22489490893979ca24f
   m_SerializeEntries:
-  - m_GUID: 28910816cb514024d9ee6c2b03564560
-    m_Address: EXPJam_02.png
+  - m_GUID: 836652e7e4dfcaf47a81cc799eba7d69
+    m_Address: EXPGem_02.sprite
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Sprites
-  - m_GUID: 8909945f1d8834a4b824d209b9231d92
-    m_Address: EXPJam_03.png
+    - PreLoad
+  - m_GUID: 54b0bebc041a79d4395110010d30e406
+    m_Address: EXPGem_03.sprite
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Sprites
-  - m_GUID: 1efb21ecc3e676c418306d8fed3065e7
-    m_Address: EXPJam_01.png
+    - PreLoad
+  - m_GUID: 0f9f9560cd381064997892dd9e116f59
+    m_Address: EXPGem_01.sprite
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Sprites
+    - PreLoad
   m_ReadOnly: 0
-  m_Settings: {fileID: 11400000, guid: 59f2ad96eadcbeb4b968c0ee24dff46a, type: 2}
+  m_Settings: {fileID: 11400000, guid: 4305360a0736ad546a388d56f649cdc6, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: c0bb8b42ab99b3549a36a8c58ed8a150, type: 2}
-    - {fileID: 11400000, guid: 25b6b5bd4b733ae4384e8124fdc56abd, type: 2}
+    - {fileID: 11400000, guid: 2e40b2945d461d444b9d01d2549dd645, type: 2}
+    - {fileID: 11400000, guid: 23ebe69c48a4fab42b9f8b9de027253d, type: 2}

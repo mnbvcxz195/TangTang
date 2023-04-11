@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditorInternal;
 using UnityEngine;
 
 public class Managers : MonoBehaviour
@@ -32,9 +30,9 @@ public class Managers : MonoBehaviour
 	#endregion
 
 	public static Managers Instance
-	{
-		get
-		{
+    {
+        get
+        {
 			if (s_init == false)
 			{
 				s_init = true;
@@ -48,21 +46,9 @@ public class Managers : MonoBehaviour
 
 				DontDestroyOnLoad(go);
 				s_instance = go.GetComponent<Managers>();
-				// TODO 초기화 코드
-				// ex) _instance._game.Init();
 			}
 
 			return s_instance;
-			// return GameObject.Find("@GameManager").GetComponent<GameManager>(); 
 		}
-	}
-
-	void Start()
-    {
-
-	}
-
-    void Update()
-    {
 	}
 }

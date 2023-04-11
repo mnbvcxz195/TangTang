@@ -15,21 +15,21 @@ MonoBehaviour:
   m_GroupName: Data
   m_Data:
     m_SerializedData: []
-  m_GUID: 5300a88c129de704bb5bcf8ef5967779
+  m_GUID: 8adbb53c2e4cdcc4ab9c327e8e34e347
   m_SerializeEntries:
-  - m_GUID: b7840c740011d384d86e7299993ac97c
-    m_Address: PlayerData.json
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Data
-  - m_GUID: 75463dbfcfab8e04791f9c44d1bbb874
+  - m_GUID: 9ad2661ef0454194c9e5eca486ea0a70
     m_Address: PlayerData.xml
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Data
+    - PreLoad
+  - m_GUID: 1db351ad4e18bea4b93e2f1c9bae3cd5
+    m_Address: SkillData.xml
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
   m_ReadOnly: 0
-  m_Settings: {fileID: 11400000, guid: 59f2ad96eadcbeb4b968c0ee24dff46a, type: 2}
+  m_Settings: {fileID: 11400000, guid: 4305360a0736ad546a388d56f649cdc6, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 45457f9f96006f342a7f2306ceb2a637, type: 2}
-    - {fileID: 11400000, guid: 675a639bea4601641b3d9141cf263c20, type: 2}
+    - {fileID: 11400000, guid: b609f56f41ea9bd438660242becd8002, type: 2}
+    - {fileID: 11400000, guid: c013da6023e87004a8a58e935b5a17c3, type: 2}

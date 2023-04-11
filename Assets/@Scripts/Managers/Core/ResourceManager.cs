@@ -5,16 +5,17 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using System;
 using Object = UnityEngine.Object;
-using UnityEngine.Pool;
 
 public class ResourceManager
 {
 	Dictionary<string, UnityEngine.Object> _resources = new Dictionary<string, UnityEngine.Object>();
 
-	public T Load<T>(string key) where T : Object                               //최소의 한 번만 AddressableAssets로 가져와 준 뒤 추후에는 일반적인 로드 방식으로 데이터 로드
-    {
+	public T Load<T>(string key) where T : Object
+	{
 		if (_resources.TryGetValue(key, out Object resource))
+		{		
 			return resource as T;
+		}
 
 		return null;
 	}
@@ -28,7 +29,7 @@ public class ResourceManager
 			return null;
 		}
 
-		//이미 삭제한 오브젝트를 날리지 않고 계속 갖고 있음(pooling으로 미리 생성시켜진 오브젝트를 필요하지 않는 것은 잠시 꺼두는 식으로 성능 향상)
+		// Pooling
 		if (pooling)
 			return Managers.Pool.Pop(prefab);
 
@@ -49,41 +50,46 @@ public class ResourceManager
 	}
 
 	#region 어드레서블
-	public void LoadAsync<T>(string key, Action<T> callback = null) where T : UnityEngine.Object            //반드시 T는 UnityEngine.Object를 보유한 것
-    {
+	public void LoadAsync<T>(string key, Action<T> callback = null) where T : UnityEngine.Object
+	{
 		// 캐시 확인.
-		if (_resources.TryGetValue(key, out Object resource))												//키 값을 이용해 벨류값을 가져옴
+		if (_resources.TryGetValue(key, out Object resource))
 		{
 			callback?.Invoke(resource as T);
 			return;
-		}		
+		}
+
+		string loadKey = key;
+		if (key.Contains(".sprite"))
+			loadKey = $"{key}[{key.Replace(".sprite", "")}]";
 
 		// 리소스 비동기 로딩 시작.
-		var asyncOperation = Addressables.LoadAssetAsync<T>(key);                                           //LoadAssetAsync가 반드시 로드가 끝난 다음에 따로 콜백을 받아야 실행 
-        asyncOperation.Completed += (op) =>
+		var asyncOperation = Addressables.LoadAssetAsync<T>(loadKey);
+		asyncOperation.Completed += (op) =>
 		{
 			_resources.Add(key, op.Result);
 			callback?.Invoke(op.Result);
 		};
 	}
 
-	public void LoadAllAsync<T>(string label, Action<string, int, int> callback) where T : UnityEngine.Object	//원하는 label을 입력해주면 해당 label을 갖고 있는 모든 것들을 생성해준다.
+	public void LoadAllAsync<T>(string label, Action<string, int, int> callback) where T : UnityEngine.Object
 	{
 		var opHandle = Addressables.LoadResourceLocationsAsync(label, typeof(T));
 		opHandle.Completed += (op) =>
 		{
-			int loadCount = 0; 
-			int totalCount = op.Result.Count;		
+			int loadCount = 0;
+			int totalCount = op.Result.Count;
 
 			foreach (var result in op.Result)
 			{
 				LoadAsync<T>(result.PrimaryKey, (obj) =>
 				{
 					loadCount++;
-					callback?.Invoke(result.PrimaryKey, loadCount, totalCount);									//로드한 파일 이름, 몇 번째, 총 개수를 콜백
+					callback?.Invoke(result.PrimaryKey, loadCount, totalCount);
 				});
 			}
 		};
 	}
+	
 	#endregion
 }

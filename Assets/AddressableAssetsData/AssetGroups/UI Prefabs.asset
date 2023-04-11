@@ -15,16 +15,16 @@ MonoBehaviour:
   m_GroupName: UI Prefabs
   m_Data:
     m_SerializedData: []
-  m_GUID: 545c3eb9734ed7147811398e84308f5a
+  m_GUID: 3135b73a48b82a64881b09e48fe0a94c
   m_SerializeEntries:
-  - m_GUID: 3592998711d20df40ae1e9768a9862b8
+  - m_GUID: 566cb01a134c7534c801423648d6bec9
     m_Address: UI_Joystick.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Prefabs
+    - PreLoad
   m_ReadOnly: 0
-  m_Settings: {fileID: 11400000, guid: 59f2ad96eadcbeb4b968c0ee24dff46a, type: 2}
+  m_Settings: {fileID: 11400000, guid: 4305360a0736ad546a388d56f649cdc6, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: ba0e019ebed1f3e4f8738676896eccc0, type: 2}
-    - {fileID: 11400000, guid: 352d0f5042ac80d439dee6503bad3774, type: 2}
+    - {fileID: 11400000, guid: d5c923eccaba10e4caf420b5524068d8, type: 2}
+    - {fileID: 11400000, guid: 35bcf1aafa112ea4187646bfa960b599, type: 2}
